@@ -29,3 +29,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
+
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: false   # 禁止初始化子模块
+          fetch-depth: 0

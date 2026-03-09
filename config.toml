@@ -1,0 +1,27 @@
+baseURL = "https://superxddd.github.io/"
+languageCode = "zh-cn"
+title = "许达的技术博客"
+theme = "PaperMod"
+
+[pagination]
+pagerSize = 10
+
+[params]
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowToc = true
+TocOpen = true
+
+# 作者信息
+[params.authors]
+  [params.authors.admin]
+    name = "许达"
+    homepage = "https://superxddd.github.io"
+
+# 社交信息
+[params.social]
+  facebook_admin = "1234567890"
+  twitter = "your_twitter"

@@ -1,0 +1,22 @@
+# Hugo build output
+/public/
+
+# Hugo cache
+/resources/_gen/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Hugo lock
+.hugo_build.lock
+
+# Node modules (如果以后装工具)
+node_modules/
+
+# Logs
+*.log
+
+# IDE files
+.vscode/
+.idea/

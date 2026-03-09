@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 许达的技术博客</title>
-    <link>https://%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D.github.io/posts/</link>
+    <link>https://superxddd.github.io/posts/</link>
     <description>Recent content in Posts on 许达的技术博客</description>
     <generator>Hugo</generator>
     <language>zh-cn</language>
     <lastBuildDate>Mon, 09 Mar 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://superxddd.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>我的第一篇博客</title>
-      <link>https://%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D.github.io/posts/first-post/</link>
+      <link>https://superxddd.github.io/posts/first-post/</link>
       <pubDate>Mon, 09 Mar 2026 00:00:00 +0000</pubDate>
-      <guid>https://%E4%BD%A0%E7%9A%84%E7%94%A8%E6%88%B7%E5%90%8D.github.io/posts/first-post/</guid>
+      <guid>https://superxddd.github.io/posts/first-post/</guid>
       <description>&lt;p&gt;你好，这是我的第一篇博客。&lt;/p&gt;&#xA;&lt;p&gt;接下来我会记录：&#xA;我的学习过程&lt;/p&gt;</description>
     </item>
   </channel>

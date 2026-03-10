@@ -8,10 +8,6 @@ hasCJKLanguage = true
 [pagination]
 pagerSize = 10
 
-[permalinks]
-post = "/p/:slug/"
-page = "/:slug/"
-
 [params]
 mainSections = ["posts"]
 rssFullContent = true

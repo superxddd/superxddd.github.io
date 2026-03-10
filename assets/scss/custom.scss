@@ -1,0 +1,47 @@
+/* 自定义背景图片 */
+body {
+    background-image: url('/images/【哲风壁纸】云朵-动漫角色.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+}
+
+/* 给主内容区域添加半透明背景，确保文字可读 */
+.container {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+/* 侧边栏背景 */
+.left-sidebar,
+.right-sidebar {
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border-radius: 10px;
+}
+
+/* 文章列表背景 */
+.article-list article {
+    background: rgba(255, 255, 255, 0.98) !important;
+}
+
+/* 深色模式适配 */
+[data-scheme="dark"] body {
+    background-image: url('/images/【哲风壁纸】云朵-动漫角色.png') !important;
+}
+
+[data-scheme="dark"] .container {
+    background: rgba(30, 30, 30, 0.95) !important;
+}
+
+[data-scheme="dark"] .left-sidebar,
+[data-scheme="dark"] .right-sidebar {
+    background: rgba(30, 30, 30, 0.95) !important;
+}
+
+[data-scheme="dark"] .article-list article {
+    background: rgba(40, 40, 40, 0.98) !important;
+}

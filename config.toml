@@ -1,27 +1,101 @@
 baseURL = "https://superxddd.github.io/"
 languageCode = "zh-cn"
 title = "许达的技术博客"
-theme = "PaperMod"
+theme = "stack"
+defaultContentLanguage = "zh-cn"
+hasCJKLanguage = true
 
 [pagination]
 pagerSize = 10
 
+[permalinks]
+post = "/p/:slug/"
+page = "/:slug/"
+
 [params]
-defaultTheme = "auto"
-ShowReadingTime = true
-ShowCodeCopyButtons = true
-ShowPostNavLinks = true
-ShowBreadCrumbs = true
-ShowToc = true
-TocOpen = true
+mainSections = ["posts"]
+rssFullContent = true
+description = "专注数据库内核、系统软件与后端基础设施"
 
-# 作者信息
-[params.authors]
-  [params.authors.admin]
-    name = "许达"
-    homepage = "https://superxddd.github.io"
+# 自定义样式
+[params.customCSS]
+enabled = true
 
-# 社交信息
-[params.social]
-  facebook_admin = "1234567890"
-  twitter = "your_twitter"
+[params.footer]
+since = 2026
+
+[params.sidebar]
+emoji = "💻"
+subtitle = "专注数据库内核、系统软件与后端基础设施的学习与实践"
+# 不设置 avatar，避免空白区域
+
+[params.article]
+[params.article.license]
+enabled = false
+
+[params.widgets]
+homepage = [
+    { type = "search" },
+    { type = "categories", params = { limit = 10 } },
+    { type = "tag-cloud", params = { limit = 15 } },
+]
+page = [{ type = "toc" }]
+
+[params.comments]
+enabled = false
+
+[[params.socialIcons]]
+identifier = "github"
+name = "GitHub"
+url = "https://github.com/superxddd"
+
+[[params.socialIcons]]
+identifier = "rss"
+name = "RSS"
+url = "/index.xml"
+
+[menu]
+[[menu.main]]
+identifier = "home"
+name = "首页"
+url = "/"
+weight = 1
+
+[[menu.main]]
+identifier = "postgresql"
+name = "PostgreSQL"
+url = "/categories/postgresql/"
+weight = 2
+
+[[menu.main]]
+identifier = "mysql"
+name = "MySQL"
+url = "/categories/mysql/"
+weight = 3
+
+[[menu.main]]
+identifier = "clickhouse"
+name = "ClickHouse"
+url = "/categories/clickhouse/"
+weight = 4
+
+[[menu.main]]
+identifier = "pgvector"
+name = "pgvector"
+url = "/categories/pgvector/"
+weight = 5
+
+[[menu.main]]
+identifier = "milvus"
+name = "Milvus"
+url = "/categories/milvus/"
+weight = 6
+
+[[menu.main]]
+identifier = "system"
+name = "系统编程"
+url = "/categories/系统编程/"
+weight = 7
+
+[outputs]
+home = ["HTML", "RSS", "JSON"]

@@ -1,0 +1,33 @@
+# 在这个目录下创建你的文章
+
+## 文章模板
+
+创建新文章时，使用以下 front matter 格式：
+
+```markdown
+---
+title: "文章标题"
+date: 2026-03-10
+draft: false
+categories: ["PostgreSQL"]  # 分类
+tags: ["标签1", "标签2"]    # 标签
+description: "文章描述"
+summary: "简短摘要"
+---
+
+文章内容...
+```
+
+## 系列文章组织
+
+如果是系列文章，建议创建子目录：
+
+```
+posts/
+├── postgresql-source/
+│   ├── _index.md
+│   ├── 01-xxx.md
+│   └── 02-xxx.md
+└── mysql-internals/
+    └── ...
+```

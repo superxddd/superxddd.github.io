@@ -1,0 +1,78 @@
+baseURL = "https://superxddd.github.io/"
+languageCode = "zh-cn"
+title = "许达的技术博客"
+theme = "PaperMod"
+
+[pagination]
+pagerSize = 10
+
+[params]
+env = "production"
+description = "记录数据库内核、系统软件与后端基础设施的技术学习"
+author = "许达"
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowShareButtons = true
+ShowToc = true
+TocOpen = true
+comments = true
+
+# 首页信息
+[params.homeInfoParams]
+Title = "许达的技术博客"
+Content = """
+专注数据库内核、系统软件与后端基础设施。
+
+记录学习过程，分享技术实践。
+"""
+
+# 社交链接
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/superxddd"
+
+[[params.socialIcons]]
+name = "email"
+url = "mailto:your-email@example.com"
+
+[[params.socialIcons]]
+name = "rss"
+url = "/index.xml"
+
+# 搜索功能
+[outputs]
+home = ["HTML", "RSS", "JSON"]
+
+# 菜单
+[[menu.main]]
+name = "首页"
+url = "/"
+weight = 1
+
+[[menu.main]]
+name = "文章"
+url = "/posts/"
+weight = 2
+
+[[menu.main]]
+name = "归档"
+url = "/archives/"
+weight = 3
+
+[[menu.main]]
+name = "标签"
+url = "/tags/"
+weight = 4
+
+[[menu.main]]
+name = "搜索"
+url = "/search/"
+weight = 5
+
+[[menu.main]]
+name = "关于"
+url = "/about/"
+weight = 6

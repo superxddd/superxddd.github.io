@@ -14,7 +14,7 @@
 
 博客在线地址：
 
-https://你的用户名.github.io
+https://superxddd.github.io
 
 （部署在 GitHub Pages）
 

@@ -152,3 +152,28 @@ aside * {
     observer.observe(html, { attributes: true, attributeFilter: ['data-scheme'] });
 })();
 </script>
+
+<!-- 不蒜子统计 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<style>
+/* 访问统计样式 */
+.site-stats {
+    text-align: center;
+    padding: 15px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+[data-scheme="dark"] .site-stats {
+    background: rgba(40, 40, 40, 0.8);
+    color: #ccc;
+}
+
+.site-stats span {
+    margin: 0 10px;
+}
+</style>

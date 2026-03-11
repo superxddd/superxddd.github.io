@@ -1,0 +1,107 @@
+html {
+    background-image: url('/images/background.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    min-height: 100vh !important;
+}
+
+body {
+    background: transparent !important;
+}
+
+:root {
+    --body-background: transparent !important;
+}
+
+.container,
+main,
+#main-wrapper,
+.main-container {
+    background: rgba(255, 255, 255, 0.7) !important;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.left-sidebar,
+.right-sidebar,
+aside {
+    background: rgba(255, 255, 255, 0.3) !important;
+    border-radius: 10px;
+}
+
+.left-sidebar .sidebar-avatar,
+.sidebar-avatar img {
+    display: none !important;
+}
+
+.home-info:empty,
+.home-info:has(h1:empty) {
+    display: none !important;
+}
+
+.first-entry.home-info {
+    display: none !important;
+}
+
+.left-sidebar {
+    padding-top: 20px !important;
+}
+
+.left-sidebar *,
+.right-sidebar *,
+aside * {
+    opacity: 1 !important;
+}
+
+.article-list article {
+    background: rgba(255, 255, 255, 0.75) !important;
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.article-list article .article-title {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.article-list article .article-subtitle {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 10px;
+}
+
+.article-list article .article-subtitle {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+html[data-scheme="dark"] {
+    background-image: url('/images/background.png') !important;
+}
+
+html[data-scheme="dark"] body {
+    background: transparent !important;
+}
+
+html[data-scheme="dark"] .container,
+html[data-scheme="dark"] main,
+html[data-scheme="dark"] #main-wrapper,
+html[data-scheme="dark"] .main-container {
+    background: rgba(30, 30, 30, 0.85) !important;
+}
+
+html[data-scheme="dark"] .left-sidebar,
+html[data-scheme="dark"] .right-sidebar,
+html[data-scheme="dark"] aside {
+    background: rgba(30, 30, 30, 0.85) !important;
+}
+
+html[data-scheme="dark"] .article-list article {
+    background: rgba(40, 40, 40, 0.9) !important;
+}

@@ -1,179 +1,21 @@
-<style>
-/* 强制背景图片 */
-html {
-    background-image: url('/images/background.png') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-attachment: fixed !important;
-    min-height: 100vh !important;
-}
+{{- with resources.Get "css/custom-head.css" -}}
+    {{- $style := . | minify | fingerprint "sha256" -}}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+{{- end -}}
 
-body {
-    background: transparent !important;
-}
+{{- with resources.Get "js/custom-head.js" -}}
+    {{- $script := . | minify | fingerprint "sha256" -}}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" crossorigin="anonymous"></script>
+{{- end -}}
 
-/* 覆盖主题的背景变量 */
-:root {
-    --body-background: transparent !important;
-}
-
-/* 主容器 - 更透明，让背景更明显 */
-.container,
-main,
-#main-wrapper,
-.main-container {
-    background: rgba(255, 255, 255, 0.7) !important;
-    border-radius: 10px;
-    padding: 20px;
-}
-
-/* 侧边栏 - 非常透明 */
-.left-sidebar,
-.right-sidebar,
-aside {
-    background: rgba(255, 255, 255, 0.3) !important;
-    border-radius: 10px;
-}
-
-/* 隐藏侧边栏头像空白区域 */
-.left-sidebar .sidebar-avatar,
-.sidebar-avatar img {
-    display: none !important;
-}
-
-/* 隐藏首页空白的 home-info */
-.home-info:empty,
-.home-info:has(h1:empty) {
-    display: none !important;
-}
-
-.first-entry.home-info {
-    display: none !important;
-}
-
-/* 优化侧边栏布局 */
-.left-sidebar {
-    padding-top: 20px !important;
-}
-
-/* 侧边栏文字不透明 */
-.left-sidebar *,
-.right-sidebar *,
-aside * {
-    opacity: 1 !important;
-}
-
-/* 文章卡片 */
-.article-list article {
-    background: rgba(255, 255, 255, 0.75) !important;
-    margin-bottom: 20px;
-    padding: 20px;
-    border-radius: 10px;
-}
-
-/* 文章标题 */
-.article-list article .article-title {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-/* 文章摘要 */
-.article-list article .article-subtitle {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 10px;
-}
-
-/* 隐藏过长的摘要 */
-.article-list article .article-subtitle {
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-/* 深色模式 */
-[data-scheme="dark"] html {
-    background-image: url('/images/background.png') !important;
-}
-
-[data-scheme="dark"] body {
-    background: transparent !important;
-}
-
-[data-scheme="dark"] .container,
-[data-scheme="dark"] main,
-[data-scheme="dark"] #main-wrapper,
-[data-scheme="dark"] .main-container {
-    background: rgba(30, 30, 30, 0.85) !important;
-}
-
-[data-scheme="dark"] .left-sidebar,
-[data-scheme="dark"] .right-sidebar,
-[data-scheme="dark"] aside {
-    background: rgba(30, 30, 30, 0.85) !important;
-}
-
-[data-scheme="dark"] .article-list article {
-    background: rgba(40, 40, 40, 0.9) !important;
-}
-</style>
-
-<script>
-// 立即执行，不等 DOMContentLoaded
-(function() {
-    const html = document.documentElement;
-    
-    function setBackground() {
-        html.style.setProperty('background-image', 'url(/images/background.png)', 'important');
-        html.style.setProperty('background-size', 'cover', 'important');
-        html.style.setProperty('background-position', 'center', 'important');
-        html.style.setProperty('background-repeat', 'no-repeat', 'important');
-        html.style.setProperty('background-attachment', 'fixed', 'important');
-        
-        // 只在 body 存在时设置
-        if (document.body) {
-            document.body.style.setProperty('background', 'transparent', 'important');
-        }
-    }
-    
-    // 立即设置
-    setBackground();
-    
-    // DOM 加载后再设置一次
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setBackground);
-    }
-    
-    // 监听主题切换
-    const observer = new MutationObserver(setBackground);
-    observer.observe(html, { attributes: true, attributeFilter: ['data-scheme'] });
-})();
-</script>
-
-<!-- 不蒜子统计 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-<style>
-/* 访问统计样式 */
-.site-stats {
-    text-align: center;
-    padding: 15px;
-    margin: 20px 0;
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 10px;
-    font-size: 0.9em;
-    color: #666;
-}
-
-[data-scheme="dark"] .site-stats {
-    background: rgba(40, 40, 40, 0.8);
-    color: #ccc;
-}
-
-.site-stats span {
-    margin: 0 10px;
-}
-</style>
+{{- if .IsHome -}}
+    {{- with resources.Get "css/latest-updates.css" -}}
+        {{- $style := . | minify | fingerprint "sha256" -}}
+        <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+    {{- end -}}
+    {{- with resources.Get "css/site-stats.css" -}}
+        {{- $style := . | minify | fingerprint "sha256" -}}
+        <link rel="stylesheet" href="{{ $style.RelPermalink }}" integrity="{{ $style.Data.Integrity }}" crossorigin="anonymous">
+    {{- end -}}
+    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+{{- end -}}

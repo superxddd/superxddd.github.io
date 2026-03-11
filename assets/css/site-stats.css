@@ -1,0 +1,18 @@
+.site-stats {
+    text-align: center;
+    padding: 15px;
+    margin: 20px 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+html[data-scheme="dark"] .site-stats {
+    background: rgba(40, 40, 40, 0.8);
+    color: #ccc;
+}
+
+.site-stats span {
+    margin: 0 10px;
+}

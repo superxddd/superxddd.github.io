@@ -1,0 +1,22 @@
+{{- $latest := where site.RegularPages "Type" "in" site.Params.mainSections -}}
+{{- $latest = where $latest "Params.hidden" "!=" true -}}
+{{- $latest = first 5 (sort $latest "Lastmod" "desc") -}}
+
+{{- if gt (len $latest) 0 -}}
+<section class="latest-updates" aria-label="latest updates">
+    <div class="latest-updates__header">
+        <h3>最新更新</h3>
+        <span>最近 {{ len $latest }} 篇</span>
+    </div>
+    <ul class="latest-updates__list">
+        {{- range $latest -}}
+        <li class="latest-updates__item">
+            <a class="latest-updates__title" href="{{ .Permalink }}">{{ .Title }}</a>
+            <time class="latest-updates__date" datetime="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">
+                {{ .Lastmod.Format "2006-01-02" }}
+            </time>
+        </li>
+        {{- end -}}
+    </ul>
+</section>
+{{- end -}}

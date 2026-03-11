@@ -1,9 +1,11 @@
 {{- define "main" }}
 
 {{- partial "site-stats.html" . }}
+{{- partial "latest-updates.html" . }}
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $pages = where $pages "Params.hidden" "!=" true }}
+{{- $tagBase := "tags" | absURL }}
 
 {{- if gt (len $pages) 0 }}
 <div class="post-list">
@@ -21,9 +23,9 @@
         <footer class="entry-footer">
             <span>{{ .Date.Format "2006-01-02" }}</span>
             {{- with .Params.tags }}
-            <span> · </span>
+            <span> &middot; </span>
             {{- range . }}
-            <a href="{{ "tags" | absURL }}/{{ . | urlize }}/">#{{ . }}</a>
+            <a href="{{ $tagBase }}/{{ . | urlize }}/">#{{ . }}</a>
             {{- end }}
             {{- end }}
         </footer>

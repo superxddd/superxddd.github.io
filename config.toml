@@ -88,10 +88,16 @@ url = "/categories/milvus/"
 weight = 6
 
 [[menu.main]]
+identifier = "cmu15445"
+name = "CMU 15-445"
+url = "/categories/cmu15445/"
+weight = 7
+
+[[menu.main]]
 identifier = "system"
 name = "系统编程"
 url = "/categories/系统编程/"
-weight = 7
+weight = 8
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]

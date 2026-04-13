@@ -2,7 +2,7 @@
 title: "CMU 15-445 Project 0：Count-Min Sketch 实现笔记"
 date: 2026-03-31
 draft: false
-categories: ["CMU 15-445"]
+categories: ["cmu15445"]
 tags: ["Count-Min Sketch", "C++", "并发", "bustub"]
 description: "整理 CMU 15-445 Project 0 中 Count-Min Sketch 的实现思路、移动语义处理和常见坑点。"
 summary: "围绕 Count-Min Sketch 的构造、移动语义、插入、合并、查询与 TopK 做一份结构化整理。"
@@ -360,4 +360,4 @@ template class CountMinSketch<int>;      // 这里同时覆盖 int 和 int32_t
 
 测试图：
 
-![测试图](/images/posts/count-min-sketch-contestion-test.png)
+![测试图](/static/images/posts/count-min-sketch-contestion-test.png)

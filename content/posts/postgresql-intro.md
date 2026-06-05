@@ -2,7 +2,7 @@
 title: "PostgreSQL 简介"
 date: 2026-03-11
 draft: false
-categories: ["PostgreSQL"]
+categories: ["pg基础"]
 tags: ["数据库", "入门"]
 description: "PostgreSQL 数据库系统简介"
 summary: "了解 PostgreSQL 的特点和应用场景"

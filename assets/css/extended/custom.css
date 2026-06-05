@@ -233,6 +233,163 @@ th, td {
     }
 }
 
+/* === 文章页左侧大纲 === */
+.main:has(.post-page-with-toc) {
+    max-width: min(1180px, calc(100vw - 32px));
+}
+
+.post-page-with-toc {
+    display: grid;
+    grid-template-columns: 220px minmax(0, 1fr);
+    gap: 36px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.post-page-with-toc .post-single {
+    width: 100%;
+    min-width: 0;
+}
+
+.post-toc-sidebar {
+    position: sticky;
+    top: 88px;
+    align-self: start;
+    max-height: calc(100vh - 112px);
+    overflow: auto;
+}
+
+.post-toc-sidebar-inner {
+    padding: 14px 12px 14px 0;
+    border-right: 1px solid var(--border);
+}
+
+.post-toc-title {
+    margin-bottom: 10px;
+    color: var(--secondary);
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.post-toc-sidebar ul {
+    margin: 0;
+    padding-left: 0;
+    list-style: none;
+}
+
+.post-toc-sidebar ul ul {
+    padding-left: 14px;
+}
+
+.post-toc-sidebar li {
+    margin: 0;
+}
+
+.post-toc-sidebar a {
+    display: block;
+    padding: 5px 0;
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 1.45;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+.post-toc-sidebar a:hover {
+    color: var(--primary);
+}
+
+/* === 分类归档页 === */
+.archive-page-header {
+    width: min(960px, 100%);
+}
+
+.category-archive {
+    display: grid;
+    gap: 28px;
+}
+
+.category-archive-section {
+    padding-top: 6px;
+    border-top: 1px solid var(--border);
+}
+
+.category-archive-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+}
+
+.category-archive-heading h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.category-archive-heading span {
+    color: var(--secondary);
+    font-size: 14px;
+}
+
+.category-archive-posts {
+    display: grid;
+    gap: 10px;
+}
+
+.category-archive-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 20px;
+    align-items: baseline;
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.category-archive-entry h3 {
+    margin: 0;
+    font-size: 18px;
+}
+
+.category-archive-entry h3 a {
+    color: var(--primary);
+    text-decoration: none;
+}
+
+.category-archive-entry-main p {
+    margin: 6px 0 0;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.category-archive-entry time,
+.category-archive-empty {
+    color: var(--secondary);
+    font-size: 14px;
+}
+
+@media (max-width: 1120px) {
+    .main:has(.post-page-with-toc) {
+        max-width: calc(var(--main-width) + var(--gap) * 2);
+    }
+
+    .post-page-with-toc {
+        display: block;
+    }
+
+    .post-toc-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .category-archive-entry {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+}
+
 /* === 全局字体优化 === */
 :root {
     --primary-color: #3b82f6;

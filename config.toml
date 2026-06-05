@@ -1,7 +1,7 @@
 baseURL = "https://superxddd.github.io/"
 languageCode = "zh-cn"
 title = "许达的技术博客"
-theme = "stack"
+theme = "PaperMod"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
 
@@ -12,6 +12,15 @@ pagerSize = 10
 mainSections = ["posts"]
 rssFullContent = true
 description = "专注数据库内核、系统软件与后端基础设施"
+env = "production"
+defaultTheme = "auto"
+ShowReadingTime = true
+ShowCodeCopyButtons = true
+ShowPostNavLinks = true
+ShowBreadCrumbs = true
+ShowToc = true
+TocOpen = true
+comments = false
 
 # 自定义样式
 [params.customCSS]
@@ -41,12 +50,10 @@ page = [{ type = "toc" }]
 enabled = false
 
 [[params.socialIcons]]
-identifier = "github"
 name = "GitHub"
 url = "https://github.com/superxddd"
 
 [[params.socialIcons]]
-identifier = "rss"
 name = "RSS"
 url = "/index.xml"
 
@@ -58,46 +65,28 @@ url = "/"
 weight = 1
 
 [[menu.main]]
-identifier = "postgresql"
-name = "PostgreSQL"
-url = "/categories/postgresql/"
+identifier = "posts"
+name = "文章"
+url = "/posts/"
 weight = 2
 
 [[menu.main]]
-identifier = "mysql"
-name = "MySQL"
-url = "/categories/mysql/"
+identifier = "archives"
+name = "归档"
+url = "/archives/"
 weight = 3
 
 [[menu.main]]
-identifier = "clickhouse"
-name = "ClickHouse"
-url = "/categories/clickhouse/"
+identifier = "search"
+name = "搜索"
+url = "/search/"
 weight = 4
 
 [[menu.main]]
-identifier = "pgvector"
-name = "pgvector"
-url = "/categories/pgvector/"
+identifier = "about"
+name = "关于"
+url = "/about/"
 weight = 5
-
-[[menu.main]]
-identifier = "milvus"
-name = "Milvus"
-url = "/categories/milvus/"
-weight = 6
-
-[[menu.main]]
-identifier = "cmu15445"
-name = "CMU 15-445"
-url = "/categories/cmu15445/"
-weight = 7
-
-[[menu.main]]
-identifier = "system"
-name = "系统编程"
-url = "/categories/系统编程/"
-weight = 8
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]

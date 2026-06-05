@@ -1,0 +1,80 @@
+{{- define "main" }}
+
+<header class="page-header archive-page-header">
+  <h1>{{ .Title }}</h1>
+  <div class="post-description">
+    按内容方向整理文章，方便回看同一条学习线上的笔记。
+  </div>
+</header>
+
+{{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
+{{- $primaryCategories := slice "pg基础" "pg设计" "基础算法" "cmu15445" }}
+{{- $categoryTitles := dict
+  "pg基础" "PG 基础"
+  "pg设计" "PG 设计"
+  "基础算法" "基础算法"
+  "cmu15445" "CMU 15-445"
+}}
+
+<div class="category-archive">
+  {{- range $primaryCategories }}
+  {{- $category := . }}
+  {{- $title := index $categoryTitles $category }}
+  {{- $categoryPages := where $pages "Params.categories" "intersect" (slice $category) }}
+  <section class="category-archive-section">
+    <div class="category-archive-heading">
+      <h2>{{ $title }}</h2>
+      <span>{{ len $categoryPages }}</span>
+    </div>
+    {{- if gt (len $categoryPages) 0 }}
+    <div class="category-archive-posts">
+      {{- range sort $categoryPages "Date" "desc" }}
+      <article class="category-archive-entry">
+        <div class="category-archive-entry-main">
+          <h3><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
+          {{- with .Summary }}
+          <p>{{ . | plainify | truncate 96 }}</p>
+          {{- end }}
+        </div>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      </article>
+      {{- end }}
+    </div>
+    {{- else }}
+    <p class="category-archive-empty">这个分类下还没有文章。</p>
+    {{- end }}
+  </section>
+  {{- end }}
+
+  {{- $otherPages := slice }}
+  {{- range $pages }}
+  {{- $categories := .Params.categories | default (slice) }}
+  {{- if not (intersect $categories $primaryCategories) }}
+  {{- $otherPages = $otherPages | append . }}
+  {{- end }}
+  {{- end }}
+
+  {{- if gt (len $otherPages) 0 }}
+  <section class="category-archive-section">
+    <div class="category-archive-heading">
+      <h2>其他</h2>
+      <span>{{ len $otherPages }}</span>
+    </div>
+    <div class="category-archive-posts">
+      {{- range sort $otherPages "Date" "desc" }}
+      <article class="category-archive-entry">
+        <div class="category-archive-entry-main">
+          <h3><a href="{{ .Permalink }}">{{ .Title | markdownify }}</a></h3>
+          {{- with .Summary }}
+          <p>{{ . | plainify | truncate 96 }}</p>
+          {{- end }}
+        </div>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+      </article>
+      {{- end }}
+    </div>
+  </section>
+  {{- end }}
+</div>
+
+{{- end }}

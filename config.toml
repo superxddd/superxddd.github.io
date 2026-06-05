@@ -46,9 +46,6 @@ homepage = [
 ]
 page = [{ type = "toc" }]
 
-[params.comments]
-enabled = false
-
 [[params.socialIcons]]
 name = "GitHub"
 url = "https://github.com/superxddd"

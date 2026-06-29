@@ -1,39 +1,134 @@
 {{- define "main" }}
 
-{{- partial "site-stats.html" . }}
-{{- partial "latest-updates.html" . }}
-
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
 {{- $pages = where $pages "Params.hidden" "!=" true }}
-{{- $tagBase := "tags" | absURL }}
+{{- $pages = sort $pages "Date" "desc" }}
+{{- $paginator := .Paginate $pages }}
 
-{{- if gt (len $pages) 0 }}
-<div class="post-list">
-{{- range $pages }}
-    <article class="post-entry">
-        <header class="entry-header">
-            <h2>{{ .Title }}</h2>
-        </header>
-        {{- if (ne (.Param "hideSummary") true) }}
-        <div class="entry-content">
-            <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}...{{ end }}</p>
-        </div>
-        {{- end }}
-        {{- if not (.Param "hideMeta") }}
-        <footer class="entry-footer">
-            <span>{{ .Date.Format "2006-01-02" }}</span>
-            {{- with .Params.tags }}
-            <span> &middot; </span>
-            {{- range . }}
-            <a href="{{ $tagBase }}/{{ . | urlize }}/">#{{ . }}</a>
-            {{- end }}
-            {{- end }}
-        </footer>
-        {{- end }}
-        <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
-    </article>
+{{- if eq $paginator.PageNumber 1 }}
+<section class="home-hero" aria-labelledby="home-title">
+  <div class="home-hero__copy">
+    <div class="home-hero__eyebrow">Systems / Database / Notes</div>
+    <h1 id="home-title">把复杂系统，<br><span>拆成可以理解的路径。</span></h1>
+    <p class="home-hero__lead">
+      这里记录数据库内核、系统软件与后端基础设施的源码阅读、实验验证和工程思考。
+    </p>
+    <div class="home-hero__actions">
+      <a class="hero-button hero-button--primary" href="{{ "posts/" | relURL }}">
+        开始阅读
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+      <a class="hero-button" href="https://github.com/superxddd" target="_blank" rel="noopener noreferrer">
+        GitHub
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M7 17 17 7M8 7h9v9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+    </div>
+    <div class="home-hero__topics" aria-label="主要内容方向">
+      <a href="{{ "categories/pg基础/" | relURL }}">PostgreSQL</a>
+      <a href="{{ "categories/系统编程/" | relURL }}">System Programming</a>
+      <a href="{{ "categories/cmu15445/" | relURL }}">CMU 15-445</a>
+    </div>
+  </div>
+
+  <div class="system-map" aria-label="一条查询的路径示意图">
+    <div class="system-map__topline">
+      <span>Query trace</span>
+      <span class="system-map__status">learning</span>
+    </div>
+    <div class="system-map__title">A query's path</div>
+    <ol class="system-map__route">
+      <li>
+        <span class="system-map__node">01</span>
+        <span class="system-map__label">client.connect()</span>
+        <span class="system-map__hint">socket</span>
+      </li>
+      <li>
+        <span class="system-map__node">02</span>
+        <span class="system-map__label">postmaster.accept()</span>
+        <span class="system-map__hint">process</span>
+      </li>
+      <li>
+        <span class="system-map__node">03</span>
+        <span class="system-map__label">backend.parse()</span>
+        <span class="system-map__hint">query tree</span>
+      </li>
+      <li>
+        <span class="system-map__node">04</span>
+        <span class="system-map__label">executor.run()</span>
+        <span class="system-map__hint">tuples</span>
+      </li>
+    </ol>
+    <div class="system-map__footer" aria-hidden="true">
+      <span>POSTGRES</span>
+      <span>LINUX</span>
+      <span>C / C++</span>
+    </div>
+  </div>
+</section>
+
+{{- partial "site-stats.html" . }}
+{{- else }}
+<header class="page-header">
+  <h1>更多笔记</h1>
+  <div class="post-description">继续沿着数据库、系统与算法的脉络往下读。</div>
+</header>
 {{- end }}
-</div>
+
+<section class="home-posts" aria-labelledby="recent-posts-title">
+  <header class="home-posts__header">
+    <div>
+      <div class="section-eyebrow">Recent notes</div>
+      <h2 id="recent-posts-title">{{ if eq $paginator.PageNumber 1 }}最近笔记{{ else }}全部笔记{{ end }}</h2>
+    </div>
+    <a class="home-posts__all" href="{{ "archives/" | relURL }}">浏览全部归档 <span aria-hidden="true">→</span></a>
+  </header>
+
+  <div class="post-grid">
+    {{- range $index, $page := $paginator.Pages }}
+    <article class="post-entry">
+      <div class="post-card__topline">
+        <span class="post-card__index">{{ printf "%02d" (add $index 1) }}</span>
+        {{- with .Params.categories }}
+        <a class="post-card__category" href="{{ (printf "categories/%s/" (index . 0 | urlize)) | relURL }}">{{ index . 0 }}</a>
+        {{- end }}
+      </div>
+      <header class="entry-header">
+        <h2>{{ .Title }}</h2>
+      </header>
+      {{- if (ne (.Param "hideSummary") true) }}
+      <div class="entry-content">
+        <p>{{ .Summary | plainify | htmlUnescape }}{{ if .Truncated }}…{{ end }}</p>
+      </div>
+      {{- end }}
+      <footer class="post-card__footer">
+        <div class="post-card__meta">
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <span aria-hidden="true">·</span>
+          <span>{{ .ReadingTime }} min</span>
+        </div>
+        <span class="post-card__arrow" aria-hidden="true">→</span>
+      </footer>
+      <a class="entry-link" aria-label="阅读：{{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+    </article>
+    {{- end }}
+  </div>
+</section>
+
+{{- if gt $paginator.TotalPages 1 }}
+<footer class="page-footer">
+  <nav class="pagination" aria-label="分页">
+    {{- if $paginator.HasPrev }}
+    <a class="prev" href="{{ $paginator.Prev.URL | absURL }}">← 上一页</a>
+    {{- end }}
+    {{- if $paginator.HasNext }}
+    <a class="next" href="{{ $paginator.Next.URL | absURL }}">下一页 →</a>
+    {{- end }}
+  </nav>
+</footer>
 {{- end }}
 
 {{- end }}

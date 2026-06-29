@@ -36,7 +36,6 @@ showToc: false
 ## 💬 联系方式
 
 - **GitHub**: [github.com/superxddd](https://github.com/superxddd)
-- **Email**: your-email@example.com
 
 欢迎交流技术问题，一起学习进步！
 

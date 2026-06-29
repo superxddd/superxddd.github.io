@@ -1,3 +1,13 @@
+---
+title: "Socket 编程 Demo 合集"
+date: 2026-06-10
+draft: false
+categories: ["系统编程"]
+tags: ["Linux", "Socket", "epoll", "网络编程"]
+description: "从基础 TCP、fork per connection 到 epoll 非阻塞 IO，整理三类服务端模型。"
+summary: "沿着基础 TCP、PostgreSQL 风格进程模型和 epoll 非阻塞 IO，理解不同 server 架构的分工。"
+---
+
 # Socket 编程 Demo 合集
 
 这份笔记记录三条主线：

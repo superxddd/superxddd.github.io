@@ -12,9 +12,11 @@ pagerSize = 10
 mainSections = ["posts"]
 rssFullContent = true
 description = "专注数据库内核、系统软件与后端基础设施"
+author = "许达"
 env = "production"
 defaultTheme = "auto"
 ShowReadingTime = true
+ShowWordCount = true
 ShowCodeCopyButtons = true
 ShowPostNavLinks = true
 ShowBreadCrumbs = true
@@ -74,16 +76,22 @@ url = "/archives/"
 weight = 3
 
 [[menu.main]]
+identifier = "tags"
+name = "标签"
+url = "/tags/"
+weight = 4
+
+[[menu.main]]
 identifier = "search"
 name = "搜索"
 url = "/search/"
-weight = 4
+weight = 5
 
 [[menu.main]]
 identifier = "about"
 name = "关于"
 url = "/about/"
-weight = 5
+weight = 6
 
 [outputs]
 home = ["HTML", "RSS", "JSON"]

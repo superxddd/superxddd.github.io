@@ -8,10 +8,11 @@
 </header>
 
 {{- $pages := where site.RegularPages "Type" "in" site.Params.mainSections }}
-{{- $primaryCategories := slice "pg基础" "pg设计" "基础算法" "cmu15445" }}
+{{- $primaryCategories := slice "pg基础" "pg设计" "系统编程" "基础算法" "cmu15445" }}
 {{- $categoryTitles := dict
   "pg基础" "PG 基础"
   "pg设计" "PG 设计"
+  "系统编程" "系统编程"
   "基础算法" "基础算法"
   "cmu15445" "CMU 15-445"
 }}

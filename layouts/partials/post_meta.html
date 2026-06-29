@@ -1,0 +1,21 @@
+{{- $scratch := newScratch -}}
+
+{{- if not .Date.IsZero -}}
+{{- $scratch.Add "meta" (slice (.Date.Format "2006.01.02")) -}}
+{{- end -}}
+
+{{- if (.Param "ShowReadingTime") -}}
+{{- $scratch.Add "meta" (slice (printf "%d 分钟阅读" .ReadingTime)) -}}
+{{- end -}}
+
+{{- if (.Param "ShowWordCount") -}}
+{{- $scratch.Add "meta" (slice (printf "%d 字" .WordCount)) -}}
+{{- end -}}
+
+{{- with (partial "author.html" .) -}}
+{{- $scratch.Add "meta" (slice .) -}}
+{{- end -}}
+
+{{- with ($scratch.Get "meta") -}}
+{{- delimit . " · " -}}
+{{- end -}}

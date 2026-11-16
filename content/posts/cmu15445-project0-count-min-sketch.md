@@ -360,4 +360,4 @@ template class CountMinSketch<int>;      // 这里同时覆盖 int 和 int32_t
 
 测试图：
 
-![测试图](/static/images/posts/count-min-sketch-contestion-test.png)
+![测试图](/images/posts/count-min-sketch-contestion-test.png)

@@ -212,4 +212,4 @@ class LRUReplacer : public Replacer {
 整体来看，这一版 LRU 的思路并不复杂，重点就是把“顺序维护”和“快速定位”结合起来。
 只要理解了这两个结构各自负责什么，再去看 `Victim`、`Pin`、`Unpin` 的实现，就会顺很多。
 
-![image-20260413151009331](/static/images/posts/image-20260413151009331.png)
+![image-20260413151009331](/images/posts/image-20260413151009331.png)

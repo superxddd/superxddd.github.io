@@ -4,6 +4,12 @@ title = "许达的技术博客"
 theme = "PaperMod"
 defaultContentLanguage = "zh-cn"
 hasCJKLanguage = true
+enableGitInfo = true
+
+# 没有 front matter 的 Markdown 也可以直接发布。
+# 优先使用文章中指定的日期；否则使用 Git 提交日期或文件修改时间。
+[frontmatter]
+date = ["date", "publishDate", ":git", ":fileModTime"]
 
 [pagination]
 pagerSize = 10
@@ -24,29 +30,8 @@ ShowToc = true
 TocOpen = true
 comments = false
 
-# 自定义样式
-[params.customCSS]
-enabled = true
-
 [params.footer]
 since = 2026
-
-[params.sidebar]
-emoji = "💻"
-subtitle = "专注数据库内核、系统软件与后端基础设施的学习与实践"
-# 不设置 avatar，避免空白区域
-
-[params.article]
-[params.article.license]
-enabled = false
-
-[params.widgets]
-homepage = [
-    { type = "search" },
-    { type = "categories", params = { limit = 10 } },
-    { type = "tag-cloud", params = { limit = 15 } },
-]
-page = [{ type = "toc" }]
 
 [[params.socialIcons]]
 name = "GitHub"

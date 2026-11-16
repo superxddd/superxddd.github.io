@@ -1,95 +1,75 @@
-# 技术博客
+# 许达的技术博客
 
-![Hugo](https://img.shields.io/badge/Hugo-static--site-blue)
-![License](https://img.shields.io/badge/license-MIT-green)
-![Deploy](https://img.shields.io/badge/deploy-GitHub%20Pages-black)
+使用 Hugo 和 GitHub Pages 构建，访问地址：<https://superxddd.github.io/>。
 
-这是一个记录技术学习与系统实践的个人博客，主要关注数据库内核、系统软件以及后端基础设施相关技术。
+## 写文章：直接放入 Markdown
 
-博客中的内容主要来自日常学习、源码阅读以及实验项目的总结整理。
+把 `.md` 文件放进 `content/posts/`，提交并推送到 GitHub 的 `main` 分支即可。GitHub Actions 会自动构建并发布网站。普通 Markdown 可以直接使用，不需要填写任何额外信息：
 
+```markdown
+# PostgreSQL 学习笔记
+
+这里开始写正文。
+
+## 第一个小节
+
+正文内容……
+```
+
+例如，将文件保存为 `content/posts/PostgreSQL学习笔记.md`。未指定标题时，网站使用**文件名**作为文章标题；正文里的 `#` 标题仍会显示在文章内容中。未指定日期时，优先使用该文件最近一次 Git 提交的日期；本地未提交的文件则使用文件修改时间。因此修改文章后，自动日期可能变化，如需固定日期请使用下面的可选信息。
+
+### 直接在 GitHub 网页上写
+
+1. 登录有仓库写入权限的 GitHub 账号，打开 [新建文章](https://github.com/superxddd/superxddd.github.io/new/main/content/posts)。
+2. 输入以 `.md` 结尾的文件名，在编辑框中写 Markdown，也可以使用 GitHub 的预览功能。
+3. 点击 **Commit changes**，将文件提交到 `main` 分支。发布进度可以在仓库的 [Actions 页面](https://github.com/superxddd/superxddd.github.io/actions)查看。
+
+也可以打开 [文章目录](https://github.com/superxddd/superxddd.github.io/tree/main/content/posts)，选择 **Add file → Upload files** 上传已有的 `.md` 文件，然后提交到 `main`。编辑已有文章时，在 GitHub 上打开该文件并点击铅笔图标即可。
+
+### 可选：标题、日期和分类
+
+需要自定义标题、固定日期或添加分类和标签时，在文件开头添加以下信息；不需要时可以整个省略：
+
+```markdown
+---
+title: "PostgreSQL 学习笔记"
+date: 2026-11-16
+categories: ["pg基础"]
+tags: ["PostgreSQL", "学习笔记"]
+draft: false
 ---
 
-## 博客地址
+这里开始写正文。
+```
 
-博客在线地址：
+将 `draft` 设为 `true` 可以暂时不发布。没有填写分类的文章会出现在归档的“其他”中。
 
-https://superxddd.github.io
+### 图片
 
-（部署在 GitHub Pages）
+可以把图片上传到 `static/images/posts/`，然后在文章中使用网站路径引用，例如：
 
----
+```markdown
+![图片说明](/images/posts/example.png)
+```
 
-## 内容方向
+请同时提交图片和文章。仅引用自己电脑上的绝对路径，或者只上传 Markdown 而不上传图片，网站无法显示图片。
 
-当前主要记录以下技术方向：
+## 本地预览
 
-- 数据库内核
-- PostgreSQL 生态
-- 存储引擎
-- 分布式系统
-- C/C++ 系统编程
-- 操作系统
-- 系统性能优化
-
-部分文章会结合源码分析、实验验证以及工程实践进行展开。
-
----
-
-## 写作目的
-
-这个博客主要用于：
-
-- 记录学习过程  
-- 梳理技术理解  
-- 对复杂系统进行结构化表达  
-
-很多文章来自于：
-
-- 阅读系统源码
-- 实现小型系统
-- 复现经典论文
-- 实际工程问题的总结
-
----
-
-## 技术栈
-
-博客使用以下技术构建：
-
-- **Hugo** — 静态网站生成器  
-- **GitHub Pages** — 网站托管  
-- **Markdown** — 文章编写  
-
----
-
-## 目录结构
-- content/
-- posts/ # 技术文章
-- notes/ # 学习笔记
-- projects/ # 实验项目
-
-
----
-
-## 当前关注方向
-
-近期主要在持续学习和研究：
-
-- 数据库执行器
-- 查询优化器
-- 存储引擎
-- 事务系统
-- 分布式数据库
-
----
-
-## 本地运行
-
-启动本地开发环境：
+安装 Hugo Extended 0.145.0 后，在仓库根目录运行（与 GitHub Actions 使用的版本一致）：
 
 ```bash
-hugo server
+hugo server -D
+```
 
-## 访问
-http://localhost:1313
+打开 <http://localhost:1313/>。`-D` 会让本地预览包含草稿；正式发布时草稿不会显示。
+
+## 仓库结构
+
+- `content/posts/`：文章 Markdown。
+- `static/images/posts/`：文章图片。
+- `config.toml`：站点配置和导航菜单。
+- `layouts/`：首页、文章页和归档等自定义模板。
+- `assets/css/extended/`：按基础、首页、内容、其他页面和响应式样式拆分的自定义 CSS。
+- `themes/PaperMod/`：当前使用的主题。
+- `.github/workflows/hugo.yml`：GitHub Pages 自动发布流程。

@@ -55,7 +55,7 @@ lRUCache.get(4);    // 返回 4
 
 需要注意的是，list并没有提供手写链表的head,next等。所以基于迭代器，要用splice方法来做节点的移动。
 
-![lru算法力扣](/static/images/posts/lru算法力扣.png)
+![lru算法力扣](/images/posts/lru算法力扣.png)
 
 ```c++
 using namespace std;

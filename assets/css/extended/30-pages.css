@@ -1,0 +1,139 @@
+/* Archives, search and supporting pages */
+
+.archive-page-header {
+    max-width: 760px;
+}
+
+.category-archive {
+    display: grid;
+    gap: 18px;
+}
+
+.category-archive-section {
+    padding: 26px 28px;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--entry);
+}
+
+.category-archive-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.category-archive-heading h2 {
+    margin: 0;
+    color: var(--primary);
+    font-size: 22px;
+    letter-spacing: -0.03em;
+}
+
+.category-archive-heading span {
+    display: grid;
+    min-width: 28px;
+    height: 28px;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-family: Consolas, monospace;
+    font-size: 11px;
+}
+
+.category-archive-posts {
+    display: grid;
+}
+
+.category-archive-entry {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px;
+    align-items: baseline;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.category-archive-entry:last-child {
+    border-bottom: 0;
+    padding-bottom: 2px;
+}
+
+.category-archive-entry h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 680;
+}
+
+.category-archive-entry h3 a {
+    color: var(--primary);
+}
+
+.category-archive-entry h3 a:hover {
+    color: var(--accent);
+}
+
+.category-archive-entry-main p {
+    margin: 6px 0 0;
+    color: var(--secondary);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+.category-archive-entry time,
+.category-archive-empty {
+    color: var(--secondary);
+    font-family: Consolas, monospace;
+    font-size: 11px;
+}
+
+#searchInput {
+    height: 54px;
+    padding: 0 18px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--entry);
+    color: var(--primary);
+    font-size: 15px;
+    box-shadow: var(--shadow-sm);
+}
+
+#searchInput:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+#searchResults li {
+    margin: 12px 0;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: var(--entry);
+}
+
+/* Footer */
+
+.footer {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 32px 24px;
+    border-top: 1px solid var(--border);
+    color: var(--secondary);
+    font-size: 12px;
+}
+
+.footer a {
+    color: var(--primary);
+}
+
+.top-link {
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--entry);
+    color: var(--accent);
+    box-shadow: var(--shadow-sm);
+}
+
